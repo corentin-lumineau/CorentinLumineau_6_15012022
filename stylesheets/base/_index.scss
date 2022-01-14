@@ -1,0 +1,39 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: unset;
+  font-family: "Roboto";
+}
+
+h1 {
+  font-size: 24px;
+  margin: unset;
+}
+
+h2 {
+  font-size: 24px;
+  margin: unset;
+}
+
+h4 {
+  margin: unset;
+}
+
+p {
+  margin: unset;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.main-wrapper {
+  max-width: 1400px;
+  margin: auto;
+  position: relative;
+}
