@@ -5,7 +5,11 @@
   padding-left: 40px;
   padding-right: 40px;
 
-  &__description {
+  .wrapper-description {
+    display: flex;
+    align-items: center;
+    gap: 230px;
+
     h2 {
       font-size: 64px;
       color: #d3573c;
@@ -35,7 +39,9 @@
   .medias-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    margin-top: 50px;
+    row-gap: 40px;
+    column-gap: 116px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }

@@ -46,15 +46,20 @@ a {
   padding-left: 40px;
   padding-right: 40px;
 }
-.photograph-header__description h2 {
+.photograph-header .wrapper-description {
+  display: flex;
+  align-items: center;
+  gap: 230px;
+}
+.photograph-header .wrapper-description h2 {
   font-size: 64px;
   color: #d3573c;
 }
-.photograph-header__description .localization {
+.photograph-header .wrapper-description .localization {
   font-size: 24px;
   color: #901c1c;
 }
-.photograph-header__description .tagline {
+.photograph-header .wrapper-description .tagline {
   font-size: 18px;
 }
 .photograph-header img {
@@ -70,8 +75,10 @@ a {
 .photograph-medias-container .medias-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  margin-top: 50px;
+  row-gap: 40px;
+  column-gap: 116px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .photograph-article {

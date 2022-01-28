@@ -7,7 +7,8 @@ export default class PhotographHeader {
     const { _portrait, _name, _tagline, _country, _city } = this._data;
 
     const photographHeader = document.querySelector(".photograph-header");
-
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("wrapper-description");
     const description = document.createElement("div");
     description.classList.add("photograph-header__description");
     const name = document.createElement("h2");
@@ -24,10 +25,15 @@ export default class PhotographHeader {
     const img = document.createElement("img");
     img.setAttribute("src", `/assets/images/${_portrait}`);
 
-    photographHeader.insertBefore(description, photographHeader.children[0]);
+    const button = document.querySelector("button");
+
+    /* photographHeader.insertBefore(description, photographHeader.children[0]); */
+    photographHeader.appendChild(wrapper);
+    photographHeader.appendChild(img);
+    wrapper.appendChild(description);
+    wrapper.appendChild(button);
     description.appendChild(name);
     description.appendChild(localization);
     description.appendChild(tagline);
-    photographHeader.appendChild(img);
   }
 }
