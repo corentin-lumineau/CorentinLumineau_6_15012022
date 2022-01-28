@@ -1,0 +1,39 @@
+.photograph-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__description {
+    h2 {
+      font-size: 64px;
+      color: #d3573c;
+    }
+
+    .localization {
+      font-size: 24px;
+      color: rgba(144, 28, 28, 1);
+    }
+
+    .tagline {
+      font-size: 18px;
+    }
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.photograph-medias-container {
+  margin: 0 100px;
+  background: blue;
+
+  .medias-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+  }
+}
