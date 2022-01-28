@@ -11,6 +11,7 @@ export default class PhotographerCard {
     );
 
     const article = document.createElement("article");
+    article.classList.add("photograph-article");
 
     const link = document.createElement("a");
     link.setAttribute("href", `photographer.html?id=${_id}`);

@@ -1,4 +1,5 @@
 import Media from "../models/Media.js";
+import MediaCard from "../templates/MediaCard.js";
 import Photographer from "../models/Photographer.js";
 import PhotographHeader from "../templates/PhotographHeader.js";
 
@@ -53,7 +54,11 @@ async function getMedias() {
 
 async function initMedias() {
   const medias = await getMedias();
-  medias.render();
+  medias.forEach((media) => {
+    const mediaCard = new MediaCard(media);
+    mediaCard.render();
+    console.log(mediaCard);
+  });
 }
 
 initHeader();

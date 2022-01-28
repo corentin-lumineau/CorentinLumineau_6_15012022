@@ -7,5 +7,6 @@ export default class Media {
     this._likes = data.likes;
     this._date = data.date;
     this._price = data.price;
+    this._video = data.video;
   }
 }
