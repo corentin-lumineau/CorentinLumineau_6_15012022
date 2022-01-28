@@ -8,7 +8,7 @@ async function getPhotographer() {
   const urlParams = new URLSearchParams(queryString);
   const idPhotographer = urlParams.get("id");
 
-  const response = await fetch("../data/photographers.json");
+  const response = await fetch("./data/photographers.json");
 
   try {
     const data = await response.json();

@@ -2,7 +2,7 @@ import Photographer from "../models/Photographer.js";
 import PhotographerCard from "../templates/PhotographerCard.js";
 
 async function getPhotographers() {
-  const response = await fetch("../data/photographers.json");
+  const response = await fetch("./data/photographers.json");
   try {
     const data = await response.json();
     return data.photographers.map(
