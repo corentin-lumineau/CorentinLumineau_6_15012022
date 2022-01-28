@@ -38,7 +38,7 @@ async function getMedias() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const idPhotographer = urlParams.get("id");
-  const request = await fetch("../data/photographers.json");
+  const request = await fetch("./data/photographers.json");
 
   try {
     const response = await request.json();
