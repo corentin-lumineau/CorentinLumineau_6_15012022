@@ -8,6 +8,7 @@
 body {
   margin: unset;
   font-family: "Roboto";
+  position: relative;
 }
 
 h1 {
@@ -33,52 +34,263 @@ a {
   color: black;
 }
 
+ul {
+  margin: unset;
+  list-style: none;
+  padding: 5px 12px 5px 12px;
+  background: #901c1c;
+  border-radius: 5px;
+}
+
+button {
+  border: unset;
+}
+
+dialog {
+  border: unset;
+}
+
 .main-wrapper {
   max-width: 1400px;
   margin: auto;
   position: relative;
 }
 
-.photograph-header {
+.display-block {
+  display: block;
+}
+
+.number-1 {
+  order: -1;
+}
+
+main .photograph-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 40px;
   padding-right: 40px;
 }
-.photograph-header .wrapper-description {
+main .photograph-header .wrapper-description {
   display: flex;
   align-items: center;
-  gap: 230px;
+  justify-content: space-between;
+  max-width: 62%;
+  gap: 10vw;
 }
-.photograph-header .wrapper-description h2 {
+main .photograph-header .wrapper-description__bloc h1 {
+  margin: unset;
+}
+main .photograph-header .wrapper-description h1 {
   font-size: 64px;
   color: #d3573c;
 }
-.photograph-header .wrapper-description .localization {
+main .photograph-header .wrapper-description .localization {
   font-size: 24px;
   color: #901c1c;
 }
-.photograph-header .wrapper-description .tagline {
+main .photograph-header .wrapper-description .tagline {
   font-size: 18px;
 }
-.photograph-header img {
+main .photograph-header img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
-
-.photograph-medias-container {
+main .photograph-medias-container {
   margin: 20px 100px;
 }
-.photograph-medias-container .medias-container {
+main .photograph-medias-container .bloc-filter {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 3;
+}
+main .photograph-medias-container .bloc-filter ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 75px;
+}
+main .photograph-medias-container .bloc-filter ul li {
+  font-size: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+main .photograph-medias-container .bloc-filter ul li .fas {
+  z-index: 5;
+  transition: transform 0.3s ease-in-out;
+}
+main .photograph-medias-container .bloc-filter ul li:hover {
+  cursor: pointer;
+  color: black;
+}
+main .photograph-medias-container .bloc-filter ul li:focus {
+  color: black;
+}
+main .photograph-medias-container .bloc-filter ul li:first-child {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+main .photograph-medias-container .bloc-filter ul li:nth-last-child(-n+2) {
+  display: none;
+  align-items: center;
+  gap: 20px;
+}
+main .photograph-medias-container .bloc-filter ul li[tabindex="0"] {
+  color: black;
+}
+main .photograph-medias-container .medias-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 40px;
-  column-gap: 116px;
+  column-gap: 66px;
   padding-top: 50px;
   padding-bottom: 50px;
+}
+main .view-media {
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  box-shadow: #c4c4c4 1px 1px 2px 0px;
+}
+main .view-media__show {
+  width: 700px;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+main .view-media .slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+main .view-media .slider-container .content-container .image-title {
+  color: #901c1c;
+  font-size: 24px;
+}
+main .view-media i {
+  transform: scale(2.5);
+  color: #901c1c;
+}
+main .view-media i:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+main .view-media .close-modale-show {
+  position: absolute;
+  top: 27px;
+  right: 230px;
+  color: unset;
+  background: unset;
+}
+main .bloc-likes {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  bottom: 0;
+  right: 50px;
+  background: #e54858;
+  font-weight: bold;
+  border-radius: 5px;
+}
+main .bloc-likes__likes {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background: rgba(196, 196, 196, 0.4);
+}
+
+#contact_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  width: 80vw;
+}
+#contact_modal .modal-contact-container {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 35px 20px 35px;
+  margin: auto;
+  gap: 35px;
+}
+#contact_modal .modal-contact-container header {
+  width: 100%;
+  position: relative;
+}
+#contact_modal .modal-contact-container header h1 {
+  font-size: 40px;
+  color: black;
+  margin-right: 100px;
+}
+#contact_modal .modal-contact-container header img {
+  transform: scale(0.7);
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+#contact_modal .modal-contact-container form label {
+  font-size: 20px;
+}
+#contact_modal .modal-contact-container form input {
+  height: 40px;
+}
+#contact_modal .modal-contact-container form button {
+  width: 160px;
+  height: 60px;
+  margin-top: 25px;
+}
+#contact_modal .modal-contact-container form #your-message {
+  height: 120px;
+}
+#contact_modal .modal-contact-container form .wrapper-form-element {
+  margin: unset;
+}
+#contact_modal .modal-contact-container form .wrapper-form-element[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.8em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+#contact_modal .modal-contact-container form .wrapper-form-element[data-error-visible=true]::after {
+  opacity: 1;
+}
+#contact_modal .modal-contact-container form .wrapper-form-element[data-error-visible=true] .text-control {
+  border: 2px solid #e54858;
 }
 
 .photograph-article {
@@ -131,6 +343,9 @@ a {
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
+}
+.media-article a img:hover {
+  opacity: 0.8;
 }
 .media-article a video {
   width: 100%;
@@ -188,6 +403,11 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
+}
+
+.border-ul {
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
 }
 
 /*# sourceMappingURL=style.css.map */

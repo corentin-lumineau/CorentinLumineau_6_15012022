@@ -1,3 +1,5 @@
+import { createModaleContact } from "../pages/photographer.js";
+
 export default class PhotographHeader {
   constructor(data) {
     this._data = data;
@@ -10,8 +12,8 @@ export default class PhotographHeader {
     const wrapper = document.createElement("div");
     wrapper.classList.add("wrapper-description");
     const description = document.createElement("div");
-    description.classList.add("photograph-header__description");
-    const name = document.createElement("h2");
+    description.classList.add("wrapper-description__bloc");
+    const name = document.createElement("h1");
     name.textContent = _name;
 
     const localization = document.createElement("p");
@@ -26,8 +28,12 @@ export default class PhotographHeader {
     img.setAttribute("src", `/assets/images/${_portrait}`);
 
     const button = document.querySelector("button");
+    button.addEventListener("click", () => {
+      createModaleContact(_name);
+    });
 
-    /* photographHeader.insertBefore(description, photographHeader.children[0]); */
+    //Créer fonction pour intégrer dans le DOM
+
     photographHeader.appendChild(wrapper);
     photographHeader.appendChild(img);
     wrapper.appendChild(description);

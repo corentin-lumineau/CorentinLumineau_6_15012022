@@ -7,6 +7,7 @@
 body {
   margin: unset;
   font-family: "Roboto";
+  position: relative;
 }
 
 h1 {
@@ -32,8 +33,32 @@ a {
   color: black;
 }
 
+ul {
+  margin: unset;
+  list-style: none;
+  padding: 5px 12px 5px 12px;
+  background: $color-secondary;
+  border-radius: 5px;
+}
+
+button {
+  border: unset;
+}
+
+dialog {
+  border: unset;
+}
+
 .main-wrapper {
   max-width: 1400px;
   margin: auto;
   position: relative;
+}
+
+.display-block {
+  display: block;
+}
+
+.number-1 {
+  order: -1;
 }

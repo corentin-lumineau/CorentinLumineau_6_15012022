@@ -9,4 +9,32 @@ export default class Media {
     this._price = data.price;
     this._video = data.video;
   }
+
+  get id() {
+    return this._id;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  get likes() {
+    return this._likes;
+  }
+
+  get date() {
+    return this._date;
+  }
+
+  get price() {
+    return this._price;
+  }
+
+  get image() {
+    return this._image;
+  }
+
+  get video() {
+    return this._video;
+  }
 }

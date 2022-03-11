@@ -19,35 +19,79 @@
   </head>
   <body>
     <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+      <a href="index.html"
+        ><img src="assets/images/logo.png" class="logo" alt="FIsheye Home page"
+      /></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
+        <button class="contact_button">Contactez-moi</button>
       </div>
       <div class="photograph-medias-container">
-        <p>Trier par</p>
+        <div class="bloc-filter" aria-haspopup="listbox">
+          <label id="filter-type">Trier par</label>
+          <ul role="listbox" id="listbox1">
+            <li id="listbox1-popularity" role="option" tabindex="-1">
+              Popularité<i class="fas fa-chevron-up" tabindex="0"></i>
+            </li>
+            <li
+              id="listbox1-date"
+              class="border-ul"
+              role="option"
+              tabindex="-1"
+            >
+              Date
+            </li>
+            <li id="listbox1-title" role="option" tabindex="-1">Titre</li>
+          </ul>
+        </div>
         <div class="medias-container"></div>
       </div>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="modalShowMedia"
+    >
+      <div class="modal-contact-container">
+        <header></header>
+        <form id="form">
+          <div
+            class="wrapper-form-element"
+            data-error="Veuillez entrer 2 caractères ou plus"
+          >
+            <label for="first">Prénom</label>
+            <input id="first" type="text" name="Prénom" />
+          </div>
+          <div
+            class="wrapper-form-element"
+            data-error="Veuillez entrer 2 caractères ou plus"
+          >
+            <label for="last">Nom</label>
+            <input id="last" type="test" name="Nom" />
+          </div>
+          <div
+            class="wrapper-form-element"
+            data-error="Veuillez entrer une adresse mail correct"
+          >
+            <label for="mail">Email</label>
+            <input id="mail" type="email" name="Mail" />
+          </div>
+          <div
+            class="wrapper-form-element"
+            data-error="Veuillez remplir votre message"
+          >
+            <label for="your-message">Votre message</label>
+            <input id="your-message" name="Message" />
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
+    <div class="overlay"></div>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js" type="module"></script>
+    <script src="/scripts/pages/contact.js" type="module"></script>
   </body>
 </html>
