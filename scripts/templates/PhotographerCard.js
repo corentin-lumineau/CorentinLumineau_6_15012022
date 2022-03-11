@@ -18,6 +18,7 @@ export default class PhotographerCard {
 
     const img = document.createElement("img");
     img.setAttribute("src", `/assets/images/${_portrait}`);
+    img.setAttribute("alt", "");
     const h2 = document.createElement("h2");
     h2.textContent = _name;
 
