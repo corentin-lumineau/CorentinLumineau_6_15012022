@@ -21,6 +21,7 @@ export default function createBlocLikes(price, likes) {
 }
 
 export function handleTotalLikes() {
+  //Increment the total number of likes
   const containerBlocLikes = document.querySelector(".bloc-likes__likes");
   const numberOfLikes = containerBlocLikes.querySelector("p");
   parseInt(numberOfLikes.textContent++);

@@ -5,6 +5,7 @@ import PhotographHeader from "../templates/PhotographHeader.js";
 import createBlocLikes from "../templates/blocLikes.js";
 
 async function getPhotographer() {
+  //get the selected photographer
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const idPhotographer = urlParams.get("id");
@@ -31,12 +32,13 @@ async function displayPhotographer(data) {
 }
 
 async function initHeader() {
+  //Bloc header initialize with the infos of the photographer
   const photographer = await getPhotographer();
   displayPhotographer(photographer);
-  const price = photographer[0].price;
 }
 
 async function initBlocLikes() {
+  //Bloc likes initialization with likes from all medias
   const photographer = await getPhotographer();
   const medias = await getMedias();
   const price = photographer[0].price;
@@ -48,9 +50,11 @@ async function initBlocLikes() {
 
   createBlocLikes(price, likes);
 }
+
 initBlocLikes();
 
 async function getMedias() {
+  //get all medias of the selected photographer
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const idPhotographer = urlParams.get("id");
@@ -86,6 +90,8 @@ function cleanMediasContainer() {
 }
 
 const handleFilter = (event) => {
+  //listener on each filter-name to trigger filters and launch them
+  //Handling keyboard utilisation to navigate
   const allElements = document.querySelectorAll("li");
   const lastElements = dropdown.querySelectorAll("li:nth-last-child(-n + 2");
 
@@ -149,6 +155,7 @@ function hideLastElements(node) {
 }
 
 function changeContent(event) {
+  //Display the selected filter in the dropdown
   const selectedElement = event.currentTarget;
   selectedElement.classList.remove("border-ul");
   dropdown.prepend(selectedElement);
@@ -177,7 +184,6 @@ const filterByPopularity = (medias) => {
   medias.sort((a, b) => {
     return b.likes - a.likes;
   });
-  //appeler une seule fois cleanMediasContainer + createCardMedias avec une oneline function
   cleanMediasContainer();
   createCardMedia(medias);
 };

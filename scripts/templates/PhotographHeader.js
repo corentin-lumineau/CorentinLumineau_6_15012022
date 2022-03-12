@@ -32,8 +32,6 @@ export default class PhotographHeader {
       createModaleContact(_name);
     });
 
-    //Créer fonction pour intégrer dans le DOM
-
     photographHeader.appendChild(wrapper);
     photographHeader.appendChild(img);
     wrapper.appendChild(description);
