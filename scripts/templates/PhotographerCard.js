@@ -17,16 +17,10 @@ export default class PhotographerCard {
     link.setAttribute("href", `photographer.html?id=${_id}`);
 
     const img = document.createElement("img");
-    img.setAttribute("src", `/assets/images/${_portrait}`);
+    img.setAttribute("src", `./assets/images/${_portrait}`);
     img.setAttribute("alt", "");
     const h2 = document.createElement("h2");
     h2.textContent = _name;
-
-    /*     [_country, _tagline, _price].forEach((element) => {
-      console.log(Object.keys({ element }));
-      const bloc = document.createElement("p");
-      bloc.textContent = element;
-    }); */
 
     const localization = document.createElement("p");
     localization.textContent = `${_city}, ${_country}`;
