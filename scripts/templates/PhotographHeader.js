@@ -25,7 +25,7 @@ export default class PhotographHeader {
     tagline.classList.add("tagline");
 
     const img = document.createElement("img");
-    img.setAttribute("src", `/assets/images/${_portrait}`);
+    img.setAttribute("src", `./assets/images/${_portrait}`);
 
     const button = document.querySelector("button");
     button.addEventListener("click", () => {

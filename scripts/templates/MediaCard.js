@@ -21,13 +21,13 @@ export default class MediaCard {
     const link = document.createElement("a");
     if (_video) {
       const video = document.createElement("video");
-      video.setAttribute("src", `/assets/videos/${_video}`);
+      video.setAttribute("src", `./assets/videos/${_video}`);
       video.setAttribute("type", "video/mp4");
       video.setAttribute("controls", true);
       link.appendChild(video);
     } else {
       const img = document.createElement("img");
-      img.setAttribute("src", `/assets/photographers/${_image}`);
+      img.setAttribute("src", `./assets/photographers/${_image}`);
       img.setAttribute("tabindex", "0");
       img.setAttribute("alt", "photo");
       img.addEventListener("click", () => {});

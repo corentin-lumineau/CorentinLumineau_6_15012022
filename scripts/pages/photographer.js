@@ -223,7 +223,7 @@ function navigateMedia(event, array, type) {
     const previousImage = array[currentImageIndex - 1];
     slider
       .querySelector("img")
-      .setAttribute("src", `/assets/photographers/${previousImage.image}`);
+      .setAttribute("src", `./assets/photographers/${previousImage.image}`);
     slider.querySelector("img").setAttribute("id", previousImage.id);
     title.textContent = previousImage.title;
 
@@ -232,7 +232,7 @@ function navigateMedia(event, array, type) {
     const nextImage = array[currentImageIndex + 1];
     slider
       .querySelector("img")
-      .setAttribute("src", `/assets/photographers/${nextImage.image}`);
+      .setAttribute("src", `./assets/photographers/${nextImage.image}`);
     slider.querySelector("img").setAttribute("id", nextImage.id);
     title.textContent = nextImage.title;
   }
