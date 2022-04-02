@@ -29,7 +29,7 @@ export default class MediaCard {
       const img = document.createElement("img");
       img.setAttribute("src", `./assets/photographers/${_image}`);
       img.setAttribute("tabindex", "0");
-      img.setAttribute("alt", "photo");
+      img.setAttribute("alt", title);
       img.addEventListener("click", () => {});
       link.appendChild(img);
       img.addEventListener("click", () => {

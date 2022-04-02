@@ -225,6 +225,7 @@ function navigateMedia(event, array, type) {
       .querySelector("img")
       .setAttribute("src", `./assets/photographers/${previousImage.image}`);
     slider.querySelector("img").setAttribute("id", previousImage.id);
+   
     title.textContent = previousImage.title;
 
     title.textContent = previousImage.title;
@@ -232,8 +233,11 @@ function navigateMedia(event, array, type) {
     const nextImage = array[currentImageIndex + 1];
     slider
       .querySelector("img")
-      .setAttribute("src", `./assets/photographers/${nextImage.image}`);
-    slider.querySelector("img").setAttribute("id", nextImage.id);
+      .setAttribute("src", `./assets/photographers/${nextImage.image}`)
+      slider.querySelector("img").setAttribute("id", nextImage.id);
+      slider.querySelector("img").setAttribute("alt", nextImage.title);
+      
+
     title.textContent = nextImage.title;
   }
 }
@@ -251,18 +255,25 @@ export function createModale(img, title, id) {
   const rightArrow = document.createElement("i");
   rightArrow.classList.add("fas");
   rightArrow.classList.add("fa-chevron-right");
+  rightArrow.setAttribute("role", "button");
+  rightArrow.setAttribute("tabindex", 2);
 
   const leftArrow = document.createElement("i");
   leftArrow.classList.add("fas");
   leftArrow.classList.add("fa-chevron-left");
+  leftArrow.setAttribute("role", "button");
+  leftArrow.setAttribute("tabindex", 1);
 
-  const contentContainer = document.createElement("div");
+  const contentContainer = document.createElement("a");
   contentContainer.setAttribute("tabindex", 0);
+  contentContainer.setAttribute("aria-label", `${title}`)
   contentContainer.classList.add("content-container");
 
   const content = document.createElement("img");
   content.setAttribute("src", img);
   content.setAttribute("id", id);
+  content.setAttribute("alt", title);
+
   content.classList.add("view-media__show");
 
   const imageTitle = document.createElement("p");
@@ -270,10 +281,13 @@ export function createModale(img, title, id) {
   imageTitle.textContent = title;
 
   const closeButton = document.createElement("button");
-  closeButton.setAttribute("role", "button");
+  
   closeButton.setAttribute("tabindex", 0);
 
-  closeButton.classList.add("close-modale-show");
+  closeButton.classList.add('close-modale-show');
+  closeButton.setAttribute('role', "button");
+  closeButton.setAttribute('aria-label', "Fermer image");
+  
   closeButton.innerHTML = "<i class='fas fa-times'></i>";
   closeButton.focus();
   closeButton.addEventListener("click", () => {
@@ -340,7 +354,7 @@ export const createModaleContact = (name) => {
   const header = modaleContact.querySelector("header");
   const photographerName = name;
   header.innerHTML = `<h1>Contactez-moi ${photographerName}</h1>
-  <img src="assets/icons/close.svg" class="close-modale-show role="button" tabindex="0">`;
+  <img src="assets/icons/close.svg" class="close-modale-show" role="button" aria-label="Fermer formulaire de contact" tabindex="0">`;
   const buttonClose = modaleContact.querySelector(".close-modale-show");
 
   overlay.style.display = "block";
