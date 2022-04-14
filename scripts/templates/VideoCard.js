@@ -1,7 +1,6 @@
-import { createModale } from "../pages/photographer.js";
 import { handleTotalLikes } from "./blocLikes.js";
 
-export default class MediaCard {
+export default class VideoCard {
   constructor(data) {
     this._data = data;
   }
@@ -13,27 +12,19 @@ export default class MediaCard {
   render() {
     const mediasContainer = document.querySelector(".medias-container");
     const title = this._data.title;
-    const { _image, _video } = this._data;
+    const { _video } = this._data;
     let { _likes } = this._data;
     const article = document.createElement("article");
     article.classList.add("media-article");
 
     const link = document.createElement("a");
- 
-    const img = document.createElement("img");
-    img.setAttribute("src", `./assets/photographers/${_image}`);
-    img.setAttribute("tabindex", "0");
-    img.setAttribute("alt", title);
-    img.addEventListener("click", () => {});
-    link.appendChild(img);
-    img.addEventListener("click", () => {
-      createModale(img.src, title, this._data.id);
-    });
-    img.addEventListener("keydown", (event) => {
-      const key = event.key;
-      if (key !== "Enter") return;
-      createModale(img.src, title, this._data.id);
-    });
+    
+    const video = document.createElement("video");
+    video.setAttribute("src", `./assets/videos/${_video}`);
+    video.setAttribute("type", "video/mp4");
+    video.setAttribute("controls", true);
+    link.appendChild(video);
+   
     
 
     const details = document.createElement("div");

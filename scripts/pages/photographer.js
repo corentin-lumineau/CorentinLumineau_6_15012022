@@ -1,8 +1,10 @@
 import Media from "../models/Media.js";
 import MediaCard from "../templates/MediaCard.js";
+import VideoCard from "../templates/VideoCard.js"
 import Photographer from "../models/Photographer.js";
 import PhotographHeader from "../templates/PhotographHeader.js";
 import createBlocLikes from "../templates/blocLikes.js";
+import MediasFactory from "../factories/MediasFactory.js";
 
 async function getPhotographer() {
   //get the selected photographer
@@ -50,7 +52,7 @@ async function initBlocLikes() {
 
   createBlocLikes(price, likes);
 }
-
+ 
 initBlocLikes();
 
 async function getMedias() {
@@ -66,7 +68,7 @@ async function getMedias() {
       (media) => media.photographerId == idPhotographer
     );
 
-    return filterResponse.map((media) => new Media(media));
+    return filterResponse.map((media) => new MediasFactory(media));
   } catch (error) {
     console.log(error);
   }
@@ -74,10 +76,18 @@ async function getMedias() {
 
 function createCardMedia(medias) {
   medias.forEach((media) => {
-    const mediaCard = new MediaCard(media);
-    mediaCard.render();
+    if(media.constructor.name ==="Media") {
+      const mediaCard = new MediaCard(media);
+      mediaCard.render();
+    }
+    else {
+      const mediaCard = new VideoCard(media);
+      mediaCard.render();
+    }
   });
 }
+
+
 
 function cleanMediasContainer() {
   const mainContainer = document.querySelector(".photograph-medias-container");
@@ -169,8 +179,7 @@ function changeContent(event) {
 }
 
 async function launchFilter(event) {
-  let filterName = event.currentTarget.textContent;
-
+  let filterName = event.currentTarget.textContent.trim();
   if (filterName == "Date") {
     filterByDate(medias);
   } else if (filterName == "Titre") {
