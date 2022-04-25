@@ -139,7 +139,7 @@ main .photograph-medias-container .bloc-filter ul li:first-child {
   align-items: center;
   gap: 20px;
 }
-main .photograph-medias-container .bloc-filter ul li:nth-last-child(-n+2) {
+main .photograph-medias-container .bloc-filter ul li:nth-last-child(-n + 2) {
   display: none;
   align-items: center;
   gap: 20px;
@@ -275,7 +275,10 @@ main .bloc-likes__likes {
 #contact_modal .modal-contact-container form .wrapper-form-element {
   margin: unset;
 }
-#contact_modal .modal-contact-container form .wrapper-form-element[data-error]::after {
+#contact_modal
+  .modal-contact-container
+  form
+  .wrapper-form-element[data-error]::after {
   content: attr(data-error);
   font-size: 0.8em;
   color: #e54858;
@@ -286,10 +289,17 @@ main .bloc-likes__likes {
   opacity: 0;
   transition: 0.3s;
 }
-#contact_modal .modal-contact-container form .wrapper-form-element[data-error-visible=true]::after {
+#contact_modal
+  .modal-contact-container
+  form
+  .wrapper-form-element[data-error-visible="true"]::after {
   opacity: 1;
 }
-#contact_modal .modal-contact-container form .wrapper-form-element[data-error-visible=true] .text-control {
+#contact_modal
+  .modal-contact-container
+  form
+  .wrapper-form-element[data-error-visible="true"]
+  .text-control {
   border: 2px solid #e54858;
 }
 
