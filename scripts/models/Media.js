@@ -7,7 +7,7 @@ export default class Media {
     this._likes = data.likes;
     this._date = data.date;
     this._price = data.price;
-    this._video = data.video;
+
   }
 
   get id() {
@@ -32,9 +32,5 @@ export default class Media {
 
   get image() {
     return this._image;
-  }
-
-  get video() {
-    return this._video;
   }
 }

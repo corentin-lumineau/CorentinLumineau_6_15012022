@@ -1,8 +1,10 @@
 import Media from "../models/Media.js";
 import MediaCard from "../templates/MediaCard.js";
+import VideoCard from "../templates/VideoCard.js";
 import Photographer from "../models/Photographer.js";
 import PhotographHeader from "../templates/PhotographHeader.js";
 import createBlocLikes from "../templates/blocLikes.js";
+import MediasFactory from "../factories/MediasFactory.js";
 
 async function getPhotographer() {
   //get the selected photographer
@@ -66,7 +68,7 @@ async function getMedias() {
       (media) => media.photographerId == idPhotographer
     );
 
-    return filterResponse.map((media) => new Media(media));
+    return filterResponse.map((media) => new MediasFactory(media));
   } catch (error) {
     console.log(error);
   }
@@ -74,8 +76,13 @@ async function getMedias() {
 
 function createCardMedia(medias) {
   medias.forEach((media) => {
-    const mediaCard = new MediaCard(media);
-    mediaCard.render();
+    if (media.constructor.name === "Media") {
+      const mediaCard = new MediaCard(media);
+      mediaCard.render();
+    } else {
+      const mediaCard = new VideoCard(media);
+      mediaCard.render();
+    }
   });
 }
 
@@ -169,8 +176,7 @@ function changeContent(event) {
 }
 
 async function launchFilter(event) {
-  let filterName = event.currentTarget.textContent;
-
+  let filterName = event.currentTarget.textContent.trim();
   if (filterName == "Date") {
     filterByDate(medias);
   } else if (filterName == "Titre") {
@@ -189,6 +195,7 @@ const filterByPopularity = (medias) => {
 };
 
 const filterByDate = (medias) => {
+  debugger;
   medias.sort(function (a, b) {
     return new Date(b.date) - new Date(a.date);
   });
@@ -225,6 +232,7 @@ function navigateMedia(event, array, type) {
       .querySelector("img")
       .setAttribute("src", `./assets/photographers/${previousImage.image}`);
     slider.querySelector("img").setAttribute("id", previousImage.id);
+
     title.textContent = previousImage.title;
 
     title.textContent = previousImage.title;
@@ -234,6 +242,8 @@ function navigateMedia(event, array, type) {
       .querySelector("img")
       .setAttribute("src", `./assets/photographers/${nextImage.image}`);
     slider.querySelector("img").setAttribute("id", nextImage.id);
+    slider.querySelector("img").setAttribute("alt", nextImage.title);
+
     title.textContent = nextImage.title;
   }
 }
@@ -251,18 +261,25 @@ export function createModale(img, title, id) {
   const rightArrow = document.createElement("i");
   rightArrow.classList.add("fas");
   rightArrow.classList.add("fa-chevron-right");
+  rightArrow.setAttribute("role", "button");
+  rightArrow.setAttribute("tabindex", 2);
 
   const leftArrow = document.createElement("i");
   leftArrow.classList.add("fas");
   leftArrow.classList.add("fa-chevron-left");
+  leftArrow.setAttribute("role", "button");
+  leftArrow.setAttribute("tabindex", 1);
 
-  const contentContainer = document.createElement("div");
+  const contentContainer = document.createElement("a");
   contentContainer.setAttribute("tabindex", 0);
+  contentContainer.setAttribute("aria-label", `${title}`);
   contentContainer.classList.add("content-container");
 
   const content = document.createElement("img");
   content.setAttribute("src", img);
   content.setAttribute("id", id);
+  content.setAttribute("alt", title);
+
   content.classList.add("view-media__show");
 
   const imageTitle = document.createElement("p");
@@ -270,10 +287,13 @@ export function createModale(img, title, id) {
   imageTitle.textContent = title;
 
   const closeButton = document.createElement("button");
-  closeButton.setAttribute("role", "button");
+
   closeButton.setAttribute("tabindex", 0);
 
   closeButton.classList.add("close-modale-show");
+  closeButton.setAttribute("role", "button");
+  closeButton.setAttribute("aria-label", "Fermer image");
+
   closeButton.innerHTML = "<i class='fas fa-times'></i>";
   closeButton.focus();
   closeButton.addEventListener("click", () => {
@@ -340,7 +360,7 @@ export const createModaleContact = (name) => {
   const header = modaleContact.querySelector("header");
   const photographerName = name;
   header.innerHTML = `<h1>Contactez-moi ${photographerName}</h1>
-  <img src="assets/icons/close.svg" class="close-modale-show role="button" tabindex="0">`;
+  <img src="assets/icons/close.svg" class="close-modale-show" role="button" aria-label="Fermer formulaire de contact" tabindex="0">`;
   const buttonClose = modaleContact.querySelector(".close-modale-show");
 
   overlay.style.display = "block";
